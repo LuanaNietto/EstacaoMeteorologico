@@ -8,9 +8,6 @@ import {
   Thermometer,
   Droplets,
   Gauge,
-  Wind,
-  CloudRain,
-  Sun,
   RefreshCw
 } from "lucide-react";
 
@@ -78,15 +75,6 @@ export default function Home() {
           <TabsTrigger value="pressao" className="data-[state=active]:bg-green-100 data-[state=active]:text-green-800">
             Pressão Atmosférica
           </TabsTrigger>
-          {/* <TabsTrigger value="vento" className="data-[state=active]:bg-yellow-100 data-[state=active]:text-yellow-800">
-            Vento
-          </TabsTrigger>
-          <TabsTrigger value="chuva" className="data-[state=active]:bg-indigo-100 data-[state=active]:text-indigo-800">
-            Probabilidade de Chuva
-          </TabsTrigger>
-          <TabsTrigger value="uv" className="data-[state=active]:bg-purple-100 data-[state=active]:text-purple-800">
-            Índice UV
-          </TabsTrigger> */}
         </TabsList>
 
         <TabsContent value="temperatura">
@@ -202,120 +190,6 @@ export default function Home() {
             />
           </div>
         </TabsContent>
-
-        {/* <TabsContent value="vento">
-          <div className="grid gap-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <MetricCard
-                title="Velocidade do Vento"
-                value={currentData.windSpeed}
-                unit="km/h"
-                icon={<Wind className="h-5 w-5 text-white" />}
-                description="Velocidade média atual"
-                colorClass="bg-yellow-700 text-white"
-              />
-              <MetricCard
-                title="Velocidade Mínima"
-                value={Math.min(...historicalData.windSpeed.map(w => w.value))}
-                unit="km/h"
-                icon={<Wind className="h-5 w-5 text-white" />}
-                description="Nas últimas 24 horas"
-                colorClass="bg-green-700 text-white"
-              />
-              <MetricCard
-                title="Velocidade Máxima"
-                value={Math.max(...historicalData.windSpeed.map(w => w.value))}
-                unit="km/h"
-                icon={<Wind className="h-5 w-5 text-white" />}
-                description="Nas últimas 24 horas"
-                colorClass="bg-yellow-700 text-white"
-              />
-            </div>
-            <DataChart
-              title="Velocidade do Vento nas Últimas 24 Horas"
-              data={historicalData.windSpeed}
-              color="#fbbf24"
-              unit="km/h"
-              valueFormatter={(value) => value.toFixed(1)}
-            />
-          </div>
-        </TabsContent>
-
-        <TabsContent value="chuva">
-          <div className="grid gap-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <MetricCard
-                title="Probabilidade de Chuva"
-                value={currentData.rainProbability}
-                unit="%"
-                icon={<CloudRain className="h-5 w-5 text-white" />}
-                description="Probabilidade atual de precipitação"
-                colorClass="bg-blue-700 text-white"
-              />
-              <MetricCard
-                title="Probabilidade Mínima"
-                value={Math.min(...historicalData.rainProbability.map(r => r.value))}
-                unit="%"
-                icon={<CloudRain className="h-5 w-5 text-white" />}
-                description="Nas últimas 24 horas"
-                colorClass="bg-yellow-700 text-white"
-              />
-              <MetricCard
-                title="Probabilidade Máxima"
-                value={Math.max(...historicalData.rainProbability.map(r => r.value))}
-                unit="%"
-                icon={<CloudRain className="h-5 w-5 text-white" />}
-                description="Nas últimas 24 horas"
-                colorClass="bg-blue-700 text-white"
-              />
-            </div>
-            <DataChart
-              title="Probabilidade de Chuva nas Últimas 24 Horas"
-              data={historicalData.rainProbability}
-              color="#38bdf8"
-              unit="%"
-              valueFormatter={(value) => value.toFixed(1)}
-            />
-          </div>
-        </TabsContent>
-
-        <TabsContent value="uv">
-          <div className="grid gap-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <MetricCard
-                title="Índice UV Atual"
-                value={currentData.uvIndex}
-                unit=""
-                icon={<Sun className="h-5 w-5 text-white" />}
-                description="Nível de radiação ultravioleta"
-                colorClass="bg-purple-700 text-white"
-              />
-              <MetricCard
-                title="Índice UV Mínimo"
-                value={Math.min(...historicalData.uvIndex.map(u => u.value))}
-                unit=""
-                icon={<Sun className="h-5 w-5 text-white" />}
-                description="Nas últimas 24 horas"
-                colorClass="bg-blue-700 text-white"
-              />
-              <MetricCard
-                title="Índice UV Máximo"
-                value={Math.max(...historicalData.uvIndex.map(u => u.value))}
-                unit=""
-                icon={<Sun className="h-5 w-5 text-white" />}
-                description="Nas últimas 24 horas"
-                colorClass="bg-red-700 text-white"
-              />
-            </div>
-            <DataChart
-              title="Índice UV nas Últimas 24 Horas"
-              data={historicalData.uvIndex}
-              color="#c084fc"
-              unit=""
-              valueFormatter={(value) => value.toFixed(0)}
-            />
-          </div>
-        </TabsContent> */}
       </Tabs>
 
       <footer className="mt-12 text-center text-gray-500 text-sm">
