@@ -26,11 +26,23 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  const fetchData = () => {
-    const data = generateWeatherData();
-    setCurrentData(data);
-    setHistoricalData(generateHistoricalData(24));
-    setLastUpdate(new Date().toLocaleTimeString());
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/weather');
+      const data = await response.json();
+      setCurrentData(data);
+      const responseHist = await fetch('http://localhost:3001/api/weather/minmax');
+      const dataHist = await responseHist.json();
+      setHistoricalData(dataHist);
+      // setHistoricalData(generateHistoricalData(24));
+      setLastUpdate(data.timestamp ? new Date(data.timestamp).toLocaleTimeString() : new Date().toLocaleTimeString());
+    } catch (error) {
+      // fallback para dados aleatórios se a API não responder
+      const data = generateWeatherData();
+      setCurrentData(data);
+      setHistoricalData(generateHistoricalData(24));
+      setLastUpdate(new Date().toLocaleTimeString());
+    }
   };
 
   if (!currentData || !historicalData) {
